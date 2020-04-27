@@ -1,6 +1,3 @@
-// INCOMPLETE....
-
-
 #include <iostream>
 using namespace std;
 
@@ -10,164 +7,116 @@ class node {
         int data;
         node *next;
         node *prev;
-        
-}*head, *tail;
+        node() {
+            next = nullptr;
+            prev = nullptr;
+        }
+};
 
-//Interface
-void insertNodeatHead(int element, node** head);
-void insertNodeatEnd(int element, node** head);
-void printList(node* head);
-int search(node* head, int key);
-void deleteatBeginning(node** head);
-void deleteatIndex(node** head, int index);
+class DoublyLinkedList {
+    node* head;
+    node* tail;
+    public:
+        DoublyLinkedList() {
+            head = nullptr;
+            tail = nullptr;
+        }
+        void insertNodeatHead(int element);
+        void insertNodeatEnd(int element);
+        void printList();
+        int search(int key);
+        void deleteatBeginning();
+        void deleteatIndex(int index);
+        void deleteatEnd();
+};
+
+
 
 //Driver Code
 int main() {
-    cout << "Welcome to Integer Linked List Interface!\n";
-    while (true) {
-        cout << "\nEnter the number indicated against the option you want to select.\n1. Insert a Node at the Head.\n2. Insert Node at the End\n3. Print the list\n";
-        cout << "4. Search an element in the list\n5. Delete the Node at the Beginning\n6. Delete the node at a given index\n7. Exit\nInput: ";
-        int input;
-        cin >> input;
-        int val;
-        switch (input)
-        {
-        case 1:
-            cout << "Enter the value of the integer you want to insert: ";
-            cin >> val;
-            insertNodeatHead(val, &head, &tail);
-            break;
-        case 2:
-            cout << "Enter the value of the integer you want to insert: ";
-            cin >> val;
-            insertNodeatEnd(val, &head, &tail);
-            break;
-        case 3:
-            printList(head);
-            break;
-        case 4:
-            cout << "Enter the value of the integer you want to search: ";
-            cin >> val;
-            search(head, val);
-            break;
-        case 5:
-            deleteatBeginning(&head);
-            break;
-        case 6:
-            cout << "Enter the index of the node you want to delete: ";
-            cin >> val;
-            deleteatIndex(&head, val);
-            break;
-        case 7:
-            cout << "Exiting...\n";
-            return 0;
-        default:
-            cout << "Invalid Choice\n";
-            break;
-        }
-    }
+    DoublyLinkedList l;
+    l.insertNodeatHead(5);
+    l.insertNodeatHead(4);
+    l.insertNodeatEnd(6);
+    l.printList();
+    l.insertNodeatEnd(1);
+    l.printList();
+    l.deleteatIndex(2);
+    l.printList();
+    cout << l.search(5) << endl;
 }
 
-//Definitions
-void insertNodeatHead(int element, node** head,node** tail) {
-    node *temp = new node();
-    temp->prev = nullptr;
+
+
+void DoublyLinkedList :: insertNodeatHead(int element) {
+    node* temp = new node();
     temp->data = element;
-    temp->next = *head;
-    if (*head == nullptr) {
-        *head = temp;
-        *tail = temp;
-        return;
+    temp->next = head;
+    head = temp;
+    if (head->next != nullptr) {
+        head->next->prev = head;
     }
-    *head = temp;
+    if (tail == nullptr) tail = temp;
 }
-void insertNodeatEnd(int element, node** head,node** tail)) {
-    node *temp = new node();
+void DoublyLinkedList :: insertNodeatEnd(int element) {
+    node* temp = new node();
+    tail->next = temp;
     temp->data = element;
-    temp->next = nullptr;
-    if (*head == nullptr) {
-        *head = temp;
-        *tail = temp;
-        return;
-    }
-    temp->prev = *tail;
-    *tail = temp;
+    temp->prev = tail;
+    tail = temp;
+    if (head == nullptr) head = temp;
 }
-void printList(node* head) {
-    if (head == nullptr) {
-        cout << "Empty List" << '\n';
-        return;
+void DoublyLinkedList :: printList() {
+    node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " ";
+        temp = temp->next;
     }
-    node *pos = head;
-    while(head != nullptr) {
-        cout << head->data << '\n';
-        head = head->next;
-    }
+    cout << endl;
 }
-int search(node* head, int key) {
-    /*      RETURN VALUES
-        -2 = Empty List
-        -1 = Not Found
-        Non-Negative Integer = Index
-    */
-    if (head == nullptr) {
-        cout << "Empty List" << '\n';
-        return -2;
-    }
-    int pass = 0;
-    int index = -1;
-    while (head != nullptr) {
+int DoublyLinkedList :: search(int key) {
+    node* traverse = head;
+    if (head == nullptr) return -2;
+    int index = 0;
+    while (traverse != nullptr) {
+        if (traverse->data == key) {
+            return index;
+        }
+        traverse = traverse->next;
         index++;
-        if (head->data == key) {
-            pass = 1;
-            break;
-        }
-        head = head->next;
     }
-    if (pass == 0) {
-        cout << "NOT Found" << '\n';
-        return -1;
-    }
-    else if (pass == 1) {
-        cout << "Found " << key << " at index " << index << '\n';
-        return index; 
-    }
+    return -1;
 }
-void deleteatBeginning(node** head, node** tail) {
-    if (*head == nullptr){
-        cout << "Nothing to delete\n";
-        return;
-    }
-    if (head->next == nullptr) {
-        node* temp = *head;
-        *head = nullptr;
-        *tail = nullptr;
-        free(temp);
-        return;
-    }
-    node* temp = *head;
-    *head = (*head)->next;
+void DoublyLinkedList :: deleteatBeginning() {
+    node* temp = head;
+    head = head->next;
+    temp->prev = nullptr;
     free(temp);
 }
-void deleteatIndex(node** head, int index) {
-    if (*head == nullptr) {
-        cout << "Empty List. Can't Delete\n";
-        return;
-    }
+void DoublyLinkedList :: deleteatEnd() {
+    if (tail == nullptr) return;
+    node* temp = tail;
+    tail = tail->prev;
+    tail->next = nullptr;
+    free(temp);
+}
+void DoublyLinkedList :: deleteatIndex(int index) {
+    if (index < 0) return;
+    if (head == nullptr) return;
+    node* traverse = head;
     if (index == 0) {
-        deleteatBeginning(head);
+        deleteatBeginning();
         return;
     }
-    node* start = *head;
-    int t = index -1;
-    while(t--) {
-        if (start->next->next == nullptr) {
-            cout << "Index not found\n";
-            return;
-        }
-        start = start->next;
+    while (traverse != nullptr && index != 0)
+    {
+        if (traverse->next == nullptr) break;
+        traverse = traverse->next;
+        index--;
     }
-    node* temp = start->next;
-    start->next = start->next->next;
-    free(temp);
+    if (index != 0) return;
+    node* temp = traverse;
+    traverse->prev->next = traverse->next;
+    if (traverse->next != nullptr) traverse->next->prev = traverse->prev;
+    free(temp);    
 }
