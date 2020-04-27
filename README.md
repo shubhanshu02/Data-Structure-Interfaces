@@ -1,6 +1,20 @@
-# Data-Structure-Interfaces
+# Data Structure Interfaces
 
-This repository is intended to contain the interfaces of various data structures. The repository is implemented in C++. 
-Currently it contains - 
-* Singly Linked List (Completed)
-* Double Linked List (Incomplete)
+## About the Repository
+This repository is intended to contain the interfaces of various data structures. 
+
+ 1. The repository is implemented in **C++**
+ 2. Any viewer of this repository is invited to contribute here.
+ 3. Currently, all interfaces are made for **integers** only
+ 4. Data type of storage objects can be changed just by replacing 'int' by the desired data type.
+
+## Goals
+
+ - [x] Singly Linked List
+ - [x] Doubly Linked List
+ - [ ] Circular Linked List
+ - [ ] Stack
+ - [ ] Queue
+ - [ ] Double Ended Queue (Deq)
+ - [ ] Trees
+ - [ ] Graphs
