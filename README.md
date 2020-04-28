@@ -12,7 +12,7 @@ This repository is intended to contain the interfaces of various data structures
 
  - [x] Singly Linked List
  - [x] Doubly Linked List
- - [ ] Circular Linked List
+ - [X] Circular Linked List
  - [ ] Stack
  - [ ] Queue
  - [ ] Double Ended Queue (Deq)
