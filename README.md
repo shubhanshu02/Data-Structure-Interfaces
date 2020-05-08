@@ -15,6 +15,7 @@ This repository is intended to contain the interfaces of various data structures
  - [X] Circular Linked List
  - [X] Stack
  - [ ] Queue
- - [ ] Double Ended Queue (Deq)
+ - [X] Double Ended Queue (Deq) with Array
+ - [X] Double Ended Queue (Deq) with Array
  - [ ] Trees
  - [ ] Graphs
