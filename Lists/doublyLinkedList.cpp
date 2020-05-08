@@ -15,8 +15,9 @@ class node {
 
 class DoublyLinkedList {
     node* head;
-    node* tail;
+    
     public:
+node* tail;
         DoublyLinkedList() {
             head = nullptr;
             tail = nullptr;
@@ -88,13 +89,32 @@ int DoublyLinkedList :: search(int key) {
     return -1;
 }
 void DoublyLinkedList :: deleteatBeginning() {
+    if (head == nullptr) {
+        cout << "Underflow" << endl;
+        return;
+    }
+    else if (head == tail) {
+        node* temp = head;
+        head = tail = nullptr;
+        free(temp);
+        return;
+    }
     node* temp = head;
     head = head->next;
-    temp->prev = nullptr;
+    head->prev = nullptr;
     free(temp);
 }
 void DoublyLinkedList :: deleteatEnd() {
-    if (tail == nullptr) return;
+    if (tail == nullptr) {
+        cout << "Underflow" << endl;
+        return;
+    }
+    else if (head == tail) {
+        node* temp = head;
+        head = tail = nullptr;
+        free(temp);
+        return;
+    }
     node* temp = tail;
     tail = tail->prev;
     tail->next = nullptr;
