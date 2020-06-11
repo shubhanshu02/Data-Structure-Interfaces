@@ -10,13 +10,13 @@ This repository is intended to contain the interfaces of various data structures
 
 ## Goals
 
- - [x] Singly Linked List
- - [x] Doubly Linked List
- - [X] Circular Linked List
- - [X] Stack
- - [ ] Queue
- - [X] Double Ended Queue (Deq) with Array
- - [X] Double Ended Queue (Deq) with Doubly Linked List
- - [X] Binary Search Tree
- - [X] AVL Tree
- - [ ] Graphs
+-  [x] Singly Linked List
+-  [x] Doubly Linked List
+-  [x] Circular Linked List
+-  [x] Stack
+-  [ ] Queue
+-  [x] Double Ended Queue (Deq) with Array
+-  [x] Double Ended Queue (Deq) with Doubly Linked List
+-  [x] Binary Search Tree
+-  [x] AVL Tree
+-  [ ] Graphs

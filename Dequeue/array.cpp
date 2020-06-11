@@ -3,7 +3,7 @@ using namespace std;
 #define size 50
 
 class Dequeue {
-    int arr[size];
+    int arr[size] = {0};
     int front;
     int rear;
     public:

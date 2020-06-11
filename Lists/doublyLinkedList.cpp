@@ -8,6 +8,7 @@ class node {
         node *next;
         node *prev;
         node() {
+            data = 0;
             next = nullptr;
             prev = nullptr;
         }

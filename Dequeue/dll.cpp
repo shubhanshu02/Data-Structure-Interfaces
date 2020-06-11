@@ -8,6 +8,7 @@ class node {
         node *next;
         node *prev;
         node() {
+            data = 0;
             next = nullptr;
             prev = nullptr;
         }
@@ -33,9 +34,6 @@ class DoublyLinkedList {
 class Dequeue {
     DoublyLinkedList list;
     public:
-        Dequeue() {
-            list = DoublyLinkedList();
-        }
         bool is_empty();
         void push_front(int val);
         void push_back(int val);

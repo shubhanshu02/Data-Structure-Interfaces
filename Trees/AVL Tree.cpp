@@ -6,12 +6,8 @@ class node {
         int data;
         node* left;
         node* right;  
-        node(int val) {
+        explicit node(int val = 0) {
             data = val;
-            left = nullptr;
-            right = nullptr;
-        }
-        node() {
             left = nullptr;
             right = nullptr;
         }
@@ -78,15 +74,15 @@ node* insertNode(node* root ,int val) {
     
     if (root->data > val) {
         root->left = insertNode(root->left, val);
-        if ((height(root->left) - height(root->right)) = 2) {
-            if (root->left->data > x) RotatefromLeft(root);
-            else DoubleRotatefromLeft(root);
+        if ((height(root->left) - height(root->right)) == 2) {
+            if (root->left->data > root->data) rotateFromLeft(root);
+            else DoubleRotateFromLeft(root);
         }
     }
     else if (root->data < val) {
         root->right = insertNode(root->right,val); 
-        if ((height(root->right) - height(root->left)) = 2) {
-            if (root->right->data < x) RotatefromRight(root);
+        if ((height(root->right) - height(root->left)) == 2) {
+            if (root->right->data < root->data) rotateFromRight(root);
             else DoubleRotateFromRight(root);
         }
     }
@@ -136,12 +132,12 @@ node* deleteTree(node* root, int val) {
     if (root == nullptr) return root;
     if (val < root->data) {
         root->left = deleteTree(root->left, val);
-        if ((height(root->right) - height(root->left)) = 2) rotateFromRight(root);
+        if ((height(root->right) - height(root->left)) == 2) rotateFromRight(root);
         return root;
     }
     else if (val > root->data) {
         root->right = deleteTree(root->right, val);
-        if ((height(root->left) - height(root->right)) = 2) rotateFromLeft(root);
+        if ((height(root->left) - height(root->right)) == 2) rotateFromLeft(root);
         return root;
     }
     else {

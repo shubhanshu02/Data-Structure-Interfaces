@@ -6,12 +6,8 @@ class node {
         int data;
         node* left;
         node* right;  
-        node(int val) {
+        explicit node(int val = 0) {
             data = val;
-            left = nullptr;
-            right = nullptr;
-        }
-        node() {
             left = nullptr;
             right = nullptr;
         }

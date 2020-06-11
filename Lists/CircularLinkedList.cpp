@@ -7,6 +7,7 @@ class node {
         int data;
         node *next;
         node() {
+            data = 0;
             next = nullptr;
         }
 };
@@ -114,7 +115,6 @@ int CircularLinkedList :: search(int val) {
     while(traverse->next != head) {
         if (traverse->data == val) {
             return index;
-            break;
         }
         index++;
         traverse = traverse->next;
