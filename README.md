@@ -1,5 +1,8 @@
 # Data Structure Interfaces
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/081c8cdf08964dea8969e04513c731b3)](https://app.codacy.com/manual/shubhanshu02/Data-Structure-Interfaces?utm_source=github.com&utm_medium=referral&utm_content=shubhanshu02/Data-Structure-Interfaces&utm_campaign=Badge_Grade_Settings)
+
+
 ## About the Repository
 This repository is intended to contain the interfaces of various data structures. 
 
