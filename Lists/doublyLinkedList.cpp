@@ -137,7 +137,7 @@ void DoublyLinkedList :: deleteatIndex(int index) {
     }
     if (index != 0) return;
     node* temp = traverse;
-    traverse->prev->next = traverse->next;
+    if (traverse->prev != nullptr) traverse->prev->next = traverse->next;
     if (traverse->next != nullptr) traverse->next->prev = traverse->prev;
     free(temp);    
 }
