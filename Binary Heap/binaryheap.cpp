@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#define max_size 100000
+#define max_size 1000
 
 int parent(int i) {
     return i/2;
@@ -16,6 +16,7 @@ class BinaryHeap {
     public:
         BinaryHeap() {
             size = -1;
+            for (int i=0;i <max_size; i++) H[i] = 0;
         }
         void siftUp(int i) {
             while (i > 0 && H[parent(i)] < H[i])
@@ -56,7 +57,9 @@ class BinaryHeap {
             ExtractMax();
         }
         void changePriority(int i,int p) {
-            int oldp = H[i];
+            int oldp;
+            if (i >= 0 && i <= size) oldp = H[i];
+            else return;
             H[i] = p;
             if (H[i] > H[parent(i)]) siftUp(i);
             else siftDown(i);
