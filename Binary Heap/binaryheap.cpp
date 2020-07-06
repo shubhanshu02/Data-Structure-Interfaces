@@ -3,13 +3,13 @@ using namespace std;
 #define max_size 1000
 
 int parent(int i) {
-    return i/2;
+    return (i-1)/2;
 }
 int leftchild(int i) {
-    return 2*i;
+    return 2*i+1;
 }
 int rightchild(int i) {
-    return 2*i+1;
+    return 2*i+2;
 }
 class BinaryHeap {
     public:int H[max_size], size;
