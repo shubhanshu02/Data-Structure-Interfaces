@@ -57,9 +57,7 @@ class BinaryHeap {
             ExtractMax();
         }
         void changePriority(int i,int p) {
-            int oldp;
-            if (i >= 0 && i <= size) oldp = H[i];
-            else return;
+            if (i < 0 && i > size) return;
             H[i] = p;
             if (H[i] > H[parent(i)]) siftUp(i);
             else siftDown(i);
