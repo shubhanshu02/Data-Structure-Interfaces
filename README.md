@@ -22,4 +22,5 @@ This repository is intended to contain the interfaces of various data structures
 -  [x] Double Ended Queue (Deq) with Doubly Linked List
 -  [x] Binary Search Tree
 -  [x] AVL Tree
+-  [x] Binary Heaps
 -  [ ] Graphs
