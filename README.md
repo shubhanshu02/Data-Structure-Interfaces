@@ -23,4 +23,6 @@ This repository is intended to contain the interfaces of various data structures
 -  [x] Binary Search Tree
 -  [x] AVL Tree
 -  [x] Binary Heaps
+-  [x] Disjoint Sets using Union by Rank
+-  [x] Disjoint Sets using Union by Rank and Path Compression
 -  [ ] Graphs
