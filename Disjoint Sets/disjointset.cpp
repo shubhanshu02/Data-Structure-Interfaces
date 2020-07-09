@@ -8,8 +8,8 @@ class disjointSet {
     public:
         disjointSet() {
             for (int i = 0; i< capacity; i++) {
-                rank[i] = 0;
-                parent[i] = i;
+                rank[i] = -1;
+                parent[i] = -1;
             }
         }
         void makeSet(int i) {
@@ -17,12 +17,14 @@ class disjointSet {
             rank[i] = 0;
         }
         int find(int i) {
+            if (parent[i] == -1) return -1;
             while (i != parent[i]) {
                 i = parent[i];
             }
             return i;
         }
-        void union(int i, int j) {
+        void Union(int i, int j) {
+            if (parent[i] == -1 && parent[j] == -1) return;
             int i_id = find(i);
             int j_id = find(j);
             if (i_id == j_id) return;
@@ -35,3 +37,13 @@ class disjointSet {
             }
         }
 };
+
+int main() {
+    disjointSet d;
+    d.makeSet(5);
+    d.makeSet(2);
+    d.makeSet(1);
+    d.makeSet(4);
+    d.Union(1,2);
+    d.find(4);
+}
